@@ -1,8 +1,36 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>How far can a balance take us? — Counterweight</title></head><body><nav><a href="game/">Play the coin puzzle →</a></nav><main><h1>How far can a balance take us?</h1>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Notes on the counterfeit coin problem: a recurrence, a packing construction, and why we always have enough genuine coins.">
+<meta name="theme-color" content="#edf1f5">
+<meta property="og:title" content="How far can a balance take us?">
+<meta property="og:description" content="An exploration of counterfeit coins, powers of three, and the value of knowing what is genuine.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://chi-shan0707.github.io/Counterfeit-Coin-Problem/assets/balance-cover.png">
+<title>How far can a balance take us? — Counterweight</title>
+<link rel="stylesheet" href="assets/post.css">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/auto-render.min.js"></script>
+<script defer src="assets/post.js"></script>
+</head>
+<body>
+<a class="skip" href="#article">Skip to the article</a>
+<header class="site-header"><a class="wordmark" href="./">counterweight<span class="wordmark-dot">.</span></a><a class="game-link" href="game/">Play the coin puzzle <span aria-hidden="true">↗</span></a></header>
+<main>
+<article id="article">
+<div class="opening">
+<figure class="cover"><img src="assets/balance-cover.png" width="1536" height="1024" alt="A silver balance with coins on both level pans, and three groups of coins on a blue-gray table." fetchpriority="high"><figcaption>One counterfeit. Three outcomes. How much can we know?</figcaption></figure>
+<div class="title-block"><p class="eyebrow">Mathematical notes · Chi-Shan</p><h1>How far can <br>a balance take us?</h1><p class="deck">An exploration of counterfeit coins, powers of three, and the value of knowing what is genuine.</p><a class="start-reading" href="#the-questions">Follow the reasoning <span aria-hidden="true">↓</span></a></div>
+</div>
+<div class="reading-layout">
+<aside class="contents"><nav aria-label="Article contents"><p class="eyebrow">In this note</p><a href="#the-questions">The questions</a><a href="#the-balanced-scenario">The balanced scenario</a><a href="#packing-coins-together">Packing coins together</a><a href="#do-we-really-have-enough-standard-coins">Do we really have enough standard coins?</a><a href="#how-close-is-almost">How close is “almost”?</a><a href="#a-weighing-plan-as-a-matrix">A weighing plan as a matrix</a><a class="aside-game" href="game/">Try it on the balance ↗</a></nav></aside>
+<div class="prose">
 <p>There is a classical problem: you are given 12 coins, and among them there exists a counterfeit one which shares the same appearance but is either heavier or lighter than the others. I have made some basic discussion in <a href="https://chi-shan0707.github.io/musings/balancescale-and-ball/">an earlier post</a>.</p>
 <p>In that post, some questions arose in my mind. And I want to record some not-so-correct exploration before distilling it into a rigorous mathematical argument.</p>
-<h2>The questions</h2>
+<h2 id="the-questions">The questions</h2>
 <p>We are faced with $c$ coins, $w$ weighings, and $b$ balances. A <em>round</em> means one simultaneous weighing on all the balances. In a sequential strategy, we may choose the next round after seeing the previous result.</p>
 <ul>
 <li><strong>(P1)</strong> What is the minimal number of weighings to decide $c$ coins on one balance?</li>
@@ -13,7 +41,7 @@
 </blockquote>
 <p>There is exactly one counterfeit coin. All genuine coins have the same weight; every balance has the same number of coins on its two pans; a coin can appear on at most one pan per round. We start without an extra genuine coin. Later, a <strong>standard coin</strong> means a coin that we have already proved genuine.</p>
 <p>We observe a four-fold relationship from 3 coins with 2 weighings to 12 coins with 3 weighings. It is incredible. By nature, we can just imagine a double, but here we miraculously “double” the double.</p>
-<h2>The balanced scenario</h2>
+<h2 id="the-balanced-scenario">The balanced scenario</h2>
 <p>How to account for it? I think the easiest part is the “balanced” scenario of round 1. Then we actually know nothing about the rest, which is good for recurrence. And we know something very useful about the coins we just weighed: they are all genuine.</p>
 <p>Moreover, inspired by the fact that if we know whether the counterfeit is heavier or lighter, the optimum will be related to powers of 3, we can <strong>assume</strong> that we have enough standard coins.</p>
 <p>Let $RS(w)$ be the largest number of unknown coins we can decide in at most $w$ weighings on one balance, with sufficiently many standard coins available. Here the counterfeit is among the unknown coins, and its direction is initially unknown.</p>
@@ -27,7 +55,7 @@
 <p>$$\boxed{RS(w)=\sum_{j=0}^{w-1}3^j=\frac{3^w-1}{2}.}$$</p>
 <p>For example, with two weighings and three standard coins, weigh three unknown coins against the standards. An imbalance leaves three coins of known inclination, which one more weighing decides. A balance leaves just the fourth unknown coin; compare it against one standard coin to determine its inclination.</p>
 <p>This is also an upper bound: there are $2RS(w)$ possible answers and at most $3^w$ outcome strings. Since $2RS(w)$ is even and $3^w$ is odd, $2RS(w)\leq3^w-1$. The construction meets it. We can set $RS(0)=0$ to include the empty base case.</p>
-<h2>Packing coins together</h2>
+<h2 id="packing-coins-together">Packing coins together</h2>
 <p>Going back to the scenario of imbalance in round 1: I am in awe of the construction of 12 coins (I thought of it myself!). So I want to draw on the idea of reduction. What if I pack a certain number of coins together and view them as a whole? I can apply the same strategy to the packs, and finally, with the knowledge of being heavier or lighter, figure out which one in the pack is the real outlier.</p>
 <p>Considering that the 12-coin construction with 3 weighings is so ingenious, I make a bold guess: this method is almost the limit. Maybe it is a power-of-3 acceleration: first $4+4+RS(2)$, next $12+12+RS(3)$.</p>
 <p>More precisely, for $w\geq3$, put $g=3^{w-3}$. Weigh four packs of $g$ coins against four other packs of $g$ coins, leaving $RS(w-1)$ coins aside.</p>
@@ -39,27 +67,27 @@
 <p>$$RS(w-1)-4g=\frac{9g-1}{2}-4g=\frac{g-1}{2}\geq0.$$</p>
 <p>Equal-size genuine packs have equal total weight. The bad pack differs by exactly the counterfeit coin’s weight difference, so treating each pack as one coin is legitimate.</p>
 <p>Thus the capacity of this particular construction is</p>
-<p>$$\begin{aligned}C_{\mathrm{pack}}(w)&amp;=8\cdot3^{w-3}+RS(w-1)\&amp;=8\cdot3^{w-3}+\frac{3^{w-1}-1}{2}\&amp;=\boxed{\frac{25\cdot3^{w-3}-1}{2}},\qquad w\geq3.\end{aligned}$$</p>
-<h2>Do we really have enough standard coins?</h2>
+<p>$$\begin{aligned}C_{\mathrm{pack}}(w)&amp;=8\cdot3^{w-3}+RS(w-1)\\&amp;=8\cdot3^{w-3}+\frac{3^{w-1}-1}{2}\\&amp;=\boxed{\frac{25\cdot3^{w-3}-1}{2}},\qquad w\geq3.\end{aligned}$$</p>
+<h2 id="do-we-really-have-enough-standard-coins">Do we really have enough standard coins?</h2>
 <p>We actually miss one thing! I previously assumed that we had quite enough standard coins to deal with the rest in the case of balance in round 1. Do we really have enough? Check it and we will find that the first comparison is already the most demanding one.</p>
 <p>After round 1 balances, the supply is $S_0=8\cdot3^{w-3}=8g$. The first step of $RS(w-1)$ needs $3^{w-2}=3g$ standard coins. Therefore</p>
 <p>$$S_0-3^{w-2}=5g&gt;0.$$</p>
 <p>But I want to check <strong>every</strong> later step, not just the first. Suppose we stay on the balanced branch until $t$ weighings remain, where $1\leq t\leq w-1$. Every unknown coin previously compared against standards has now become a standard too. The available supply is</p>
-<p>$$\begin{aligned}S_t&amp;=8g+\sum_{k=t+1}^{w-1}3^{k-1}\&amp;=8g+\frac{3^{w-1}-3^t}{2}.\end{aligned}$$</p>
+<p>$$\begin{aligned}S_t&amp;=8g+\sum_{k=t+1}^{w-1}3^{k-1}\\&amp;=8g+\frac{3^{w-1}-3^t}{2}.\end{aligned}$$</p>
 <p>The next comparison requires $D_t=3^{t-1}$ standards. Subtracting gives</p>
 <p>$$\boxed{S_t-D_t=\frac{25g-5\cdot3^{t-1}}{2}\geq5g&gt;0.}$$</p>
 <p>The inequality follows from $3^{t-1}\leq3^{w-2}=3g$. Standard coins are reusable: weighing them does not consume them. As $t$ decreases, our supply grows and the demand shrinks. If a comparison instead tilts, the inclination is known and equal-third splitting requires no standard coins. So the supply is sufficient along every branch of this construction.</p>
-<h2>How close is “almost”?</h2>
+<h2 id="how-close-is-almost">How close is “almost”?</h2>
 <p>With $b$ balances there are $q=2b+1$ possible outcomes in a round: all balance, or exactly one of the balances tilts in one of two directions. There are not $3^b$ usable outcomes, because only one coin is counterfeit.</p>
 <p>Here is the sharper bound when we start without standard coins. Let balance $p$ have $m_p$ coins on each pan in the first round. A specified tilt on that balance leaves $2m_p$ possible answers: one of the coins on the heavier pan is heavy, or one on the lighter pan is light. The remaining rounds give at most $q^{w-1}$ outcomes. By parity,</p>
 <p>$$2m_p\leq q^{w-1}-1.$$</p>
 <p>Let $n$ coins be left off all balances. If all balances stay level, there are $2n$ possible answers, so likewise $2n\leq q^{w-1}-1$. Adding the first-round allocations gives</p>
-<p>$$\begin{aligned}c&amp;=2\sum_{p=1}^{b}m_p+n\&amp;\leq b(q^{w-1}-1)+\frac{q^{w-1}-1}{2}\&amp;=\frac{(2b+1)^w-1-2b}{2}.\end{aligned}$$</p>
+<p>$$\begin{aligned}c&amp;=2\sum_{p=1}^{b}m_p+n\\&amp;\leq b(q^{w-1}-1)+\frac{q^{w-1}-1}{2}\\&amp;=\frac{(2b+1)^w-1-2b}{2}.\end{aligned}$$</p>
 <p>Thus the bound is <strong>non-strict</strong>:</p>
 <p>$$\boxed{2c\leq(2b+1)^w-1-2b.}$$</p>
 <p>For one balance this is $U(w)=(3^w-3)/2$. Comparing it with my pack construction,</p>
 <p>$$\boxed{U(w)-C_{\mathrm{pack}}(w)=3^{w-3}-1.}$$</p>
-<table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Construction capacities by number of weighings"><table>
 <thead>
 <tr>
 <th>Weighings $w$</th>
@@ -99,14 +127,14 @@
 <td>26</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>So the guess is exact at $w=3$, but this particular packing method does not reach the bound for $w&gt;3$. Its ratio to the bound tends to $25/27$, about $92.6\%$. That is a precise meaning of “almost,” and a reason to look for a better construction.</p>
 <p>The general bound is attainable by a stronger construction; this is the result behind the game's benchmark (see <a href="https://people.math.ethz.ch/~halorenz/publications/coin_abs.html">Halbeisen and Hungerbühler, <em>The general counterfeit coin problem</em></a>). For the feasible no-spare-coin cases $c\geq3$, the answers to the opening questions are therefore</p>
 <p>$$w_{\min}(c,1)=\left\lceil\log_3(2c+3)\right\rceil,\qquad w_{\min}(c,b)=\left\lceil\log_{2b+1}(2c+2b+1)\right\rceil.$$</p>
 <p>The argument above proves the upper bound on capacity and the performance of my pack construction. It does not by itself prove the stronger construction's attainability. Also, one or two unknown coins cannot be decided without a standard coin, however many rounds we allow: the identity and inclination cannot both be separated.</p>
-<h2>A weighing plan as a matrix</h2>
+<h2 id="a-weighing-plan-as-a-matrix">A weighing plan as a matrix</h2>
 <p>When I imagine a weighing strategy, I naturally think: “Which coins go on the left, which go on the right, and what do I do after seeing the result?” But a <strong>nonsequential</strong> strategy has a special requirement: all the weighings must be fixed in advance. A matrix is a natural way to write down that entire plan.</p>
-<p>Let $A=(a_{ij})$ have $w$ rows, one per round, and $c$ columns, one per coin. Its entries come from ${-b,\ldots,-1,0,1,\ldots,b}$:</p>
+<p>Let $A=(a_{ij})$ have $w$ rows, one per round, and $c$ columns, one per coin. Its entries come from $\{-b,\ldots,-1,0,1,\ldots,b\}$:</p>
 <ul>
 <li>$a_{ij}=+p$: put coin $j$ on the right pan of balance $p$ in round $i$.</li>
 <li>$a_{ij}=-p$: put it on the left pan of balance $p$.</li>
@@ -121,4 +149,12 @@
 <li><strong>No column is zero.</strong> A coin that is never weighed gives the same all-balanced result whether it is heavy or light. Even if elimination identifies that coin, we still cannot decide its inclination.</li>
 </ol>
 <p>Conversely, these conditions are sufficient: every one of the $2c$ hypotheses has a distinct outcome vector, and each row is a legal simultaneous weighing. We can decode the observed vector by matching it to exactly one signed column.</p>
-<p>So designing a nonsequential strategy becomes a combinatorial problem: construct a matrix satisfying these three conditions. This is a different route from my adaptive recurrence, and a natural place for the next exploration to begin.</p></main></body></html>
+<p>So designing a nonsequential strategy becomes a combinatorial problem: construct a matrix satisfying these three conditions. This is a different route from my adaptive recurrence, and a natural place for the next exploration to begin.</p>
+<div class="closing"><p class="eyebrow">From the notes to the table</p><h2>Now weigh the possibilities.</h2><p>Twelve coins, one counterfeit. Try your own strategy, or experiment with several balances at once.</p><a class="game-link" href="game/">Play the coin puzzle <span aria-hidden="true">↗</span></a></div>
+</div>
+</div>
+</article>
+</main>
+<footer><a href="./">counterweight.</a><span>A personal exploration, one weighing at a time.</span><a href="post.md">Read the Markdown source ↗</a></footer>
+</body>
+</html>
