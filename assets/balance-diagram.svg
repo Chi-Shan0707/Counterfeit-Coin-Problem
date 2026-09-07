@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 480" width="560" height="480" role="img" aria-labelledby="title desc">
+  <title id="title">Four coins against four</title>
+  <desc id="desc">A flat silver balance on charcoal, with coins 1–4 on the left, 5–8 on the right, and 9–12 off the balance. The beam gently rocks, with both pans staying upright.</desc>
+  <style>
+    .rocker { transform-origin: 280px 153px; animation: sway 6s ease-in-out infinite; }
+    .pan-level { animation: level 6s ease-in-out infinite; }
+    @keyframes sway { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+    @keyframes level { 0%, 100% { transform: rotate(2deg); } 50% { transform: rotate(-2deg); } }
+    @media (prefers-reduced-motion: reduce) { .rocker, .pan-level { animation: none; } }
+  </style>
+  <rect width="560" height="480" rx="16" fill="#1d2023"/>
+  <g fill="#b9bec2" font-family="Courier New, monospace" font-size="11" letter-spacing="1.5">
+    <text x="32" y="42">THE FIRST WEIGHING</text>
+    <text x="528" y="42" text-anchor="end">4 vs 4</text>
+  </g>
+  <path d="M32 62H528 M32 346H528" stroke="#ffffff" stroke-opacity=".12"/>
+  <!-- The stand stays fixed; the suspended pans counter-rotate around the beam ends. -->
+  <path d="M280 153V318 M241 318H319" fill="none" stroke="#e4e6e4" stroke-width="6" stroke-linecap="round"/>
+  <g class="rocker">
+    <path d="M138 153H422" fill="none" stroke="#e4e6e4" stroke-width="6" stroke-linecap="round"/>
+    <g transform="translate(138 153)"><g class="pan-level"><g transform="translate(-138 -153)">
+      <path d="M63 249L138 153L213 249" fill="none" stroke="#939b9f" stroke-width="1.5"/>
+      <path d="M53 249H223C223 284 53 284 53 249Z" fill="#ffffff" fill-opacity=".02" stroke="#e4e6e4" stroke-width="2"/>
+  <g transform="translate(87 234)"><circle r="14" fill="#d6dbd7" stroke="#f4f5f0"/><text y="4" fill="#262b2d" font-family="Courier New, monospace" font-size="11" text-anchor="middle">1</text></g>
+  <g transform="translate(121 234)"><circle r="14" fill="#d6dbd7" stroke="#f4f5f0"/><text y="4" fill="#262b2d" font-family="Courier New, monospace" font-size="11" text-anchor="middle">2</text></g>
+  <g transform="translate(155 234)"><circle r="14" fill="#d6dbd7" stroke="#f4f5f0"/><text y="4" fill="#262b2d" font-family="Courier New, monospace" font-size="11" text-anchor="middle">3</text></g>
+  <g transform="translate(189 234)"><circle r="14" fill="#d6dbd7" stroke="#f4f5f0"/><text y="4" fill="#262b2d" font-family="Courier New, monospace" font-size="11" text-anchor="middle">4</text></g>
+    </g></g></g>
+    <g transform="translate(422 153)"><g class="pan-level"><g transform="translate(-422 -153)">
+      <path d="M347 249L422 153L497 249" fill="none" stroke="#939b9f" stroke-width="1.5"/>
+      <path d="M337 249H507C507 284 337 284 337 249Z" fill="#ffffff" fill-opacity=".02" stroke="#e4e6e4" stroke-width="2"/>
+  <g transform="translate(371 234)"><circle r="14" fill="#d6dbd7" stroke="#f4f5f0"/><text y="4" fill="#262b2d" font-family="Courier New, monospace" font-size="11" text-anchor="middle">5</text></g>
+  <g transform="translate(405 234)"><circle r="14" fill="#d6dbd7" stroke="#f4f5f0"/><text y="4" fill="#262b2d" font-family="Courier New, monospace" font-size="11" text-anchor="middle">6</text></g>
+  <g transform="translate(439 234)"><circle r="14" fill="#d6dbd7" stroke="#f4f5f0"/><text y="4" fill="#262b2d" font-family="Courier New, monospace" font-size="11" text-anchor="middle">7</text></g>
+  <g transform="translate(473 234)"><circle r="14" fill="#d6dbd7" stroke="#f4f5f0"/><text y="4" fill="#262b2d" font-family="Courier New, monospace" font-size="11" text-anchor="middle">8</text></g>
+    </g></g></g>
+  </g>
+  <circle cx="280" cy="153" r="8" fill="#1d2023" stroke="#e4e6e4" stroke-width="3"/>
+  <g transform="translate(229 390)"><circle r="14" fill="#d6dbd7" stroke="#f4f5f0"/><text y="4" fill="#262b2d" font-family="Courier New, monospace" font-size="11" text-anchor="middle">9</text></g>
+  <g transform="translate(263 390)"><circle r="14" fill="#d6dbd7" stroke="#f4f5f0"/><text y="4" fill="#262b2d" font-family="Courier New, monospace" font-size="11" text-anchor="middle">10</text></g>
+  <g transform="translate(297 390)"><circle r="14" fill="#d6dbd7" stroke="#f4f5f0"/><text y="4" fill="#262b2d" font-family="Courier New, monospace" font-size="11" text-anchor="middle">11</text></g>
+  <g transform="translate(331 390)"><circle r="14" fill="#d6dbd7" stroke="#f4f5f0"/><text y="4" fill="#262b2d" font-family="Courier New, monospace" font-size="11" text-anchor="middle">12</text></g>
+  <text x="280" y="435" fill="#b9bec2" font-family="Courier New, monospace" font-size="11" text-anchor="middle" letter-spacing="1.5">FOUR COINS REMAIN OFF THE BALANCE</text>
+</svg>
